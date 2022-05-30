@@ -1,1 +1,2 @@
-# day5-docker-hw
+Start: docker-compose up --build
+Stop : docker-compose down

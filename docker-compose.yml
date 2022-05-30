@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+        client:
+                build: client/
+                volumes:
+                        - type: bind
+                          source: ./client/script
+                          target: /client
+                networks:
+                        client-server:
+                                ipv4_address: 192.168.100.2
+        server:
+                build: server/
+                volumes:
+                        - type: bind
+                          source: ./server/script
+                          target: /server
+                networks:
+                        client-server:
+                                ipv4_address: 192.168.100.3
+
+networks:
+        client-server:
+                driver: bridge
+                ipam:
+                        driver: default
+                        config:
+                                - subnet: 192.168.100.0/24
